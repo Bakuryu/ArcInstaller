@@ -25,48 +25,48 @@ namespace ArcInstaller.Models
 			}
 		}
 
-		/* Inject */
+		/* Compress */
 
 		// Path to folder with mods in them
-		private string _injectModsFldr;
+		private string _compressModsFldr;
 
-		public string InjectModsFldr
+		public string CompressModsFldr
 		{
-			get => _injectModsFldr;
+			get => _compressModsFldr;
 			set
 			{
-				if (value == _injectModsFldr) return;
-				_injectModsFldr = value;
+				if (value == _compressModsFldr) return;
+				_compressModsFldr = value;
 				OnPropertyChanged();
 			}
 		}
-		// For Inject: Path to data.arc file to inject mods into or
+		// For Compress: Path to data.arc file to compress mods into or
 		// folder for compressed and renamed mods to go in
-		private string _injectArcOutput = "";
+		private string _compressOutputFldr = "";
 
 
-		public string InjectArcOutput
+		public string CompressOutputFldr
 		{
-			get => _injectArcOutput;
+			get => _compressOutputFldr;
 			set
 			{
-				if (value == _injectArcOutput) return;
-				_injectArcOutput = value;
+				if (value == _compressOutputFldr) return;
+				_compressOutputFldr = value;
 				OnPropertyChanged();
 			}
 		}
 		// Determine if mods should be combined into a single
 		// folder if dumping them
-		private bool _isInjectSingleFldr;
+		private bool _isCompressSingleFldr;
 
 
-		public bool IsInjectSingleFldr
+		public bool IsCompressSingleFldr
 		{
-			get => _isInjectSingleFldr;
+			get => _isCompressSingleFldr;
 			set
 			{
-				if (value == _isInjectSingleFldr) return;
-				_isInjectSingleFldr = value;
+				if (value == _isCompressSingleFldr) return;
+				_isCompressSingleFldr = value;
 				OnPropertyChanged();
 			}
 		}
@@ -98,19 +98,21 @@ namespace ArcInstaller.Models
 			{
 				if (value == _switchIP) return;
 				_switchIP = value;
+				Save();
 				OnPropertyChanged();
 			}
 		}
 		// Port number for the switch (given by the ftp client)
-		private int _switchPort = 0;
+		private string _switchPort = "";
 
-		public int SwitchPort
+		public string SwitchPort
 		{
 			get => _switchPort;
 			set
 			{
 				if (value == _switchPort) return;
 				_switchPort = value;
+				Save();
 				OnPropertyChanged();
 			}
 		}
@@ -146,30 +148,30 @@ namespace ArcInstaller.Models
 		/* Extract */
 
 		// Path to name table
-		private string _nameTable = "";
+		//private string _nameTable = "";
 
-		public string NameTable
-		{
-			get => _nameTable;
-			set
-			{
-				if (value == _nameTable) return;
-				_nameTable = value;
-				OnPropertyChanged();
-			}
-		}
+		//public string NameTable
+		//{
+		//	get => _nameTable;
+		//	set
+		//	{
+		//		if (value == _nameTable) return;
+		//		_nameTable = value;
+		//		OnPropertyChanged();
+		//	}
+		//}
 		// Path to optional output folder
-		private string _extractOutputFldr = "";
-		public string ExtractOutputFldr
-		{
-			get => _extractOutputFldr;
-			set
-			{
-				if (value == _extractOutputFldr) return;
-				_extractOutputFldr = value;
-				OnPropertyChanged();
-			}
-		}
+		//private string _extractOutputFldr = "";
+		//public string ExtractOutputFldr
+		//{
+		//	get => _extractOutputFldr;
+		//	set
+		//	{
+		//		if (value == _extractOutputFldr) return;
+		//		_extractOutputFldr = value;
+		//		OnPropertyChanged();
+		//	}
+		//}
 
 
 		public static ArcInstallerSettings Instance { get; } = new ArcInstallerSettings();
