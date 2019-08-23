@@ -13,14 +13,17 @@ namespace ArcInstaller.ViewModels
 
 	public class MainWindowViewModel : ViewModelBase
 	{
+		//int TabStartIndex = 2;
 		public MainWindowViewModel()
 		{
+			TabStartIndex = GetStartIndex();
 			SelectFile = ReactiveCommand.Create<string[]>(OpenFileDialogAsync);
 			SelectFolder = ReactiveCommand.Create<string>(OpenFolderDialogAsync);
 		}
 
 		public ReactiveCommand<string[], Unit> SelectFile { get; }
 		public ReactiveCommand<string, Unit> SelectFolder { get; }
+		public int TabStartIndex { get; }
 
 		async void OpenFileDialogAsync(string[] openFileParams)
 		{
@@ -115,9 +118,20 @@ namespace ArcInstaller.ViewModels
 			ArcInstallerSettings.Instance.Save();
 		}
 
-		bool IsCompressSettings()
+		int GetStartIndex()
 		{
-			return ArcInstallerSettings.Instance.CompressModsFldr != "" && ArcInstallerSettings.Instance.CompressOutputFldr != "";
+			int startIndex = 2;
+
+			if (ArcInstallerSettings.Instance.CompressModsFldr != "" && ArcInstallerSettings.Instance.CompressOutputFldr != "")
+			{
+				startIndex = 0;
+			}
+			else if (ArcInstallerSettings.Instance.FtpModsFldr != "")
+			{
+				startIndex = 1;
+			}
+
+			return startIndex;
 		}
 	}
 }

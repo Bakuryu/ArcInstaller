@@ -5,8 +5,9 @@
 						 xmlns:models="clr-namespace:ArcInstaller.Models"
 						 mc:Ignorable="d" d:DesignWidth="792" d:DesignHeight="450"
              x:Class="ArcInstaller.Views.ArcInstallerView">
-	<TabControl>
-		<TabItem IsEnabled="{Binding IsCompressSettings}" Header="Compress" Width="198" HorizontalContentAlignment="Center"></TabItem>
+	<TabControl SelectedIndex="{Binding $parent[Window].DataContext.TabStartIndex}">
+		<TabItem IsEnabled="{Binding Source={x:Static models:ArcInstallerSettings.Instance}, Path=IsCompress}" Header="Compress" Width="198" HorizontalContentAlignment="Center">
+		</TabItem>
 		<!--<TabItem IsEnabled="False" Header="FTP" Width="198" HorizontalContentAlignment="Center"></TabItem>
 		<TabItem IsEnabled="False" Header="Extract" Width="198" HorizontalContentAlignment="Center"></TabItem>-->
 		<TabItem Header="Settings" Width="198" HorizontalContentAlignment="Center">

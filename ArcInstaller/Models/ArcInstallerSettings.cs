@@ -10,6 +10,20 @@ namespace ArcInstaller.Models
 {
 	class ArcInstallerSettings : INotifyPropertyChanged
 	{
+		/* Tab Booleans */
+		private bool _isCompress = false;
+		public bool IsCompress
+		{
+			get => _isCompress;
+			set
+			{
+				if (value == _isCompress) return;
+				_isCompress = value;
+				OnPropertyChanged();
+			}
+		}
+
+
 		/* General */
 
 		// Directory to arc file
@@ -37,6 +51,8 @@ namespace ArcInstaller.Models
 			{
 				if (value == _compressModsFldr) return;
 				_compressModsFldr = value;
+				IsCompress = !(value == "");
+
 				OnPropertyChanged();
 			}
 		}
