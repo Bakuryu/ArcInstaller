@@ -23,6 +23,18 @@ namespace ArcInstaller.Models
 			}
 		}
 
+        private bool _isFTP = false;
+        public bool IsFTP
+        {
+            get => _isFTP;
+            set
+            {
+                if (value == _isFTP) return;
+                _isFTP = value;
+                OnPropertyChanged();
+            }
+        }
+
 
 		/* General */
 
@@ -35,7 +47,9 @@ namespace ArcInstaller.Models
 			{
 				if (value == _arcDir) return;
 				_arcDir = value;
-				OnPropertyChanged();
+                IsCompress = !(value == "" || this.CompressModsFldr == "" || this.CompressOutputFldr == "");
+                IsFTP = !(value == "" || this.FtpModsFldr == "" || this.SwitchIP == "" || this.SwitchPort == "");
+                OnPropertyChanged();
 			}
 		}
 
@@ -51,8 +65,7 @@ namespace ArcInstaller.Models
 			{
 				if (value == _compressModsFldr) return;
 				_compressModsFldr = value;
-				IsCompress = !(value == "");
-
+				IsCompress = !(value == "" || this.CompressOutputFldr == "");
 				OnPropertyChanged();
 			}
 		}
@@ -68,6 +81,7 @@ namespace ArcInstaller.Models
 			{
 				if (value == _compressOutputFldr) return;
 				_compressOutputFldr = value;
+                IsCompress = !(value == "" || this.CompressModsFldr == "" || this.ArcDir == "");
 				OnPropertyChanged();
 			}
 		}
@@ -101,7 +115,8 @@ namespace ArcInstaller.Models
 			{
 				if (value == _ftpModsFldr) return;
 				_ftpModsFldr = value;
-				OnPropertyChanged();
+                IsFTP = !(value == "" || this.FtpModsFldr == "" || this.SwitchIP == "" || this.SwitchPort == "" || this.ArcDir == "");
+                OnPropertyChanged();
 			}
 		}
 		// IP address for the switch (give by the ftp client)
@@ -114,7 +129,8 @@ namespace ArcInstaller.Models
 			{
 				if (value == _switchIP) return;
 				_switchIP = value;
-				Save();
+                IsFTP = !(value == "" || this.FtpModsFldr == "" || this.SwitchIP == "" || this.ArcDir == "");
+                Save();
 				OnPropertyChanged();
 			}
 		}
@@ -128,6 +144,7 @@ namespace ArcInstaller.Models
 			{
 				if (value == _switchPort) return;
 				_switchPort = value;
+                IsFTP = !(value == "" || this.FtpModsFldr == "" || this.SwitchPort == "" || this.ArcDir == "");
 				Save();
 				OnPropertyChanged();
 			}

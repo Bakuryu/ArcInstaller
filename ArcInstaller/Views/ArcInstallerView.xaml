@@ -6,11 +6,10 @@
 						 mc:Ignorable="d" d:DesignWidth="792" d:DesignHeight="450"
              x:Class="ArcInstaller.Views.ArcInstallerView">
 	<TabControl SelectedIndex="{Binding $parent[Window].DataContext.TabStartIndex}">
-		<TabItem IsEnabled="{Binding Source={x:Static models:ArcInstallerSettings.Instance}, Path=IsCompress}" Header="Compress" Width="198" HorizontalContentAlignment="Center">
+		<TabItem IsEnabled="{Binding Source={x:Static models:ArcInstallerSettings.Instance}, Path=IsCompress}" Header="Compress" Width="264" HorizontalContentAlignment="Center">
 		</TabItem>
-		<!--<TabItem IsEnabled="False" Header="FTP" Width="198" HorizontalContentAlignment="Center"></TabItem>
-		<TabItem IsEnabled="False" Header="Extract" Width="198" HorizontalContentAlignment="Center"></TabItem>-->
-		<TabItem Header="Settings" Width="198" HorizontalContentAlignment="Center">
+		<TabItem IsEnabled="{Binding Source={x:Static models:ArcInstallerSettings.Instance}, Path=IsFTP}" Header="FTP" Width="264" HorizontalContentAlignment="Center"></TabItem>
+		<TabItem Header="Settings" Width="264" HorizontalContentAlignment="Center">
 			<Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto" HorizontalAlignment="Center" Margin="30 0 30 30">
 				<Grid ColumnDefinitions="80,150,80" RowDefinitions="Auto,Auto,Auto" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="0 0 25 20">
 					<TextBlock Text="General" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0"/>

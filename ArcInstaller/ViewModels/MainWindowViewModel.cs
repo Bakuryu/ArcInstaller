@@ -2,16 +2,13 @@
 using Avalonia;
 using Avalonia.Controls;
 using ReactiveUI;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Reactive;
-using System.Text;
 
 namespace ArcInstaller.ViewModels
 {
 
-	public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ViewModelBase
 	{
 		//int TabStartIndex = 2;
 		public MainWindowViewModel()
@@ -120,7 +117,7 @@ namespace ArcInstaller.ViewModels
 
 		int GetStartIndex()
 		{
-			int startIndex = 2;
+			int startIndex = 1;
 
 			if (ArcInstallerSettings.Instance.CompressModsFldr != "" && ArcInstallerSettings.Instance.CompressOutputFldr != "")
 			{
