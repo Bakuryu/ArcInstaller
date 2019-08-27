@@ -8,7 +8,7 @@ using System.Reactive;
 namespace ArcInstaller.ViewModels
 {
 
-    public class MainWindowViewModel : ViewModelBase
+	public class MainWindowViewModel : ViewModelBase
 	{
 		//int TabStartIndex = 2;
 		public MainWindowViewModel()
@@ -117,7 +117,7 @@ namespace ArcInstaller.ViewModels
 
 		int GetStartIndex()
 		{
-			int startIndex = 1;
+			int startIndex = 2;
 
 			if (ArcInstallerSettings.Instance.CompressModsFldr != "" && ArcInstallerSettings.Instance.CompressOutputFldr != "")
 			{
